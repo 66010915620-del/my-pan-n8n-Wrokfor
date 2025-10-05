@@ -1,0 +1,205 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -992,
+        -160
+      ],
+      "id": "10af23f8-481d-4200-b52a-1c64dc54c97e",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "url": "https://www.techtalkthai.com/feed/",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        -720,
+        -304
+      ],
+      "id": "fb27e699-59aa-42f7-9c61-3a4e46f736f6",
+      "name": "RSS Read"
+    },
+    {
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "value": "GZgNr9ywyxG76B2e",
+          "mode": "list",
+          "cachedResultName": "rssdata",
+          "cachedResultUrl": "/projects/jFVBURRZ9joRz4Y8/datatables/GZgNr9ywyxG76B2e"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "RSS": "={{ $json.pubDate }}"
+          },
+          "matchingColumns": [
+            "RSS"
+          ],
+          "schema": [
+            {
+              "id": "RSS",
+              "displayName": "RSS",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {
+          "optimizeBulk": true
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1,
+      "position": [
+        -288,
+        -128
+      ],
+      "id": "b6f83a0d-8600-4cdc-8702-7f11b4ebcc7a",
+      "name": "Insert row"
+    },
+    {
+      "parameters": {
+        "url": "https://droidsans.com/feed/",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        -720,
+        -96
+      ],
+      "id": "625aeb66-f057-446e-8867-07a79bbf0e87",
+      "name": "RSS Read1"
+    },
+    {
+      "parameters": {
+        "url": "https://www.srtet.co.th/rss/news",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        -720,
+        64
+      ],
+      "id": "0a784370-ad97-4fcf-a946-e8bd19a9f639",
+      "name": "RSS Read2"
+    },
+    {
+      "parameters": {
+        "url": "https://www.nso.go.th/nsoweb/main/rssfeed/get_data/A",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        -720,
+        224
+      ],
+      "id": "76e1bf7a-82f0-4bb4-9374-2edd10de55ee",
+      "name": "RSS Read3"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "RSS Read",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS Read1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS Read2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS Read3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS Read": {
+      "main": [
+        [
+          {
+            "node": "Insert row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Insert row": {
+      "main": [
+        []
+      ]
+    },
+    "RSS Read1": {
+      "main": [
+        [
+          {
+            "node": "Insert row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS Read2": {
+      "main": [
+        [
+          {
+            "node": "Insert row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS Read3": {
+      "main": [
+        [
+          {
+            "node": "Insert row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "6f628976-5b19-4f19-895c-b42fbac49843",
+  "meta": {
+    "instanceId": "765e7cd0009806ebb5967ac47669767a45a3e05f3807c5bd95821166c2c06091"
+  },
+  "id": "qvwf3P15SubXcaC3",
+  "tags": []
+}
